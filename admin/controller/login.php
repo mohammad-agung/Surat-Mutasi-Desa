@@ -20,7 +20,8 @@ if (isset($_POST['login'])) {
             //verifying Password
             if (password_verify($password, $hashpassword)) {
                 $namauser = $num['nama_user'];
-
+                $id_admin = $num['id_user'];
+                $_SESSION['id'] = $id_admin;
                 $_SESSION['login'] = $namauser;
                 $_SESSION['username'] = $username;
                 echo "<script>document.location = '../dashboard'</script>";

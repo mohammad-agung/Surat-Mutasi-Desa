@@ -3,7 +3,10 @@ session_start();
 if (isset($_SESSION['login']) == 0) {
     header('Location: index');
     exit;
-} else { ?>
+} else {
+    include "../controller/config.php";
+    include "../model/admin/function_dashboard.php";
+?>
     <!doctype html>
     <html lang="en">
 
@@ -56,7 +59,7 @@ if (isset($_SESSION['login']) == 0) {
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
                                     <div class="font-size-sm font-w600 text-uppercase text-muted">Arsip Surat Pindah Penduduk</div>
-                                    <div class="font-size-h2 font-w400 text-dark">120,580</div>
+                                    <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataArsipPindah; ?></div>
                                 </div>
                             </a>
                         </div>
@@ -64,7 +67,7 @@ if (isset($_SESSION['login']) == 0) {
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
                                     <div class="font-size-sm font-w600 text-uppercase text-muted">Arsip Surat Penduduk Datang</div>
-                                    <div class="font-size-h2 font-w400 text-dark">150</div>
+                                    <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataArsipDatang; ?></div>
                                 </div>
                             </a>
                         </div>
@@ -72,7 +75,7 @@ if (isset($_SESSION['login']) == 0) {
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
                                     <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pindah Baru</div>
-                                    <div class="font-size-h2 font-w400 text-dark">$3,200</div>
+                                    <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataPindah; ?></div>
                                 </div>
                             </a>
                         </div>
@@ -80,7 +83,7 @@ if (isset($_SESSION['login']) == 0) {
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
                                     <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pendatang Baru</div>
-                                    <div class="font-size-h2 font-w400 text-dark">$21</div>
+                                    <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataDatang; ?></div>
                                 </div>
                             </a>
                         </div>
