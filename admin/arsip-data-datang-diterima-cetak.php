@@ -1,5 +1,6 @@
 <?php
 $nik_id = $_GET['nik'];
+$id = $_GET['id'];
 ?>
 <div class="modal-content">
     <div class="block block-themed block-transparent mb-0">
@@ -15,6 +16,7 @@ $nik_id = $_GET['nik'];
             <div class="col-lg-12">
                 <!-- Form Horizontal - Default Style -->
                 <form class="mb-5" method="POST">
+                    <input type="hidden" name="id" value=<?= $id; ?>>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label" for="example-hf-email">Nomor Surat</label>
                         <div class="col-sm-8">

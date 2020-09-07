@@ -5,8 +5,6 @@ if (isset($_SESSION['login']) == 0) {
     exit;
 } else {
     include '../controller/config.php';
-    include '../model/admin/function_datadatangarsip.php';
-    include '../model/admin/function_kirimdata.php';
     $id = 1;
     $query = mysqli_query($conn, "SELECT * FROM tbl_datapindah WHERE status=0");
 ?>
@@ -102,7 +100,7 @@ if (isset($_SESSION['login']) == 0) {
                                                 <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_buat']); ?></em>
                                             </td>
                                             <td class="d-sm-table-cell text-center">
-                                                <a href="#" class="mr-2" title="Lihat data">
+                                                <a href="data-form-pindah-get-nik?id=<?= intval($row['id_datapindah']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData" class="mr-2" title="Lihat data">
                                                     <span class="si si-eye btn btn-info">
                                                     </span>
                                                 </a>

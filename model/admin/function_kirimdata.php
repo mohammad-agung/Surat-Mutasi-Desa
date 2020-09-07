@@ -17,6 +17,24 @@ if (isset($_POST["arsipterimapindah"])) {
     }
 }
 
+if (isset($_POST["arsipubahpindah"])) {
+
+    //cek imk
+    if (arsipUbahPindah($_POST) > 0 || ubahNIK($_POST) > 0) {
+        echo "
+            <script>
+            alert('Data Berhasil DiUbah');
+            document.location.href = 'arsip-data-pindah-diterima';
+            </script>";
+    } else {
+        echo "
+            <script>
+                alert('Data Gagal Di Ubah');
+                document.location.href = 'arsip-data-pindah-diterima';
+            </script>";
+    }
+}
+
 if (isset($_POST["arsipterimadatang"])) {
 
     //cek imk
@@ -63,6 +81,19 @@ if (isset($_POST["arsiptundadatang"])) {
             <script>
                 alert('Data Gagal Di arsipkan');
                 document.location.href = 'data-form-datang';
+            </script>";
+    }
+}
+
+if (isset($_POST["cetaksuratpindah"])) {
+    if (cetakSuratPindah($_POST) > 0) {
+        $tbl_arsip_pindah = $_POST['id'];
+        include '../model/template_surat/surat_pindah.php';
+    } else {
+        echo "
+            <script>
+                alert('Ada Kesalahan Saat Mencetak Surat. SIlahkan Coba Lagi');
+                document.location.href = 'arsip-data-pindah-diterima';
             </script>";
     }
 }

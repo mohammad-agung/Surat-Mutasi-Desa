@@ -5,8 +5,8 @@ if (isset($_SESSION['login']) == 0) {
     exit;
 } else {
     include '../controller/config.php';
-    include '../model/cetak_surat/function_cetak.php';
-    include '../model/cetak_surat/function_kirimdata.php';
+    include '../model/admin/function_datapindaharsip.php';
+    include '../model/admin/function_kirimdata.php';
     $id = 1;
     $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.id_arsip_pindah,tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah WHERE tbl_arsip_pindah.status != 2");
 ?>
@@ -111,11 +111,11 @@ if (isset($_SESSION['login']) == 0) {
                                                         <span class="si si-printer btn btn-info">
                                                         </span>
                                                     </a>
+                                                    <a href="arsip-data-pindah-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" title=" ubah data" data-toggle="modal" data-target="#one-modal-apps" id="view">
+                                                        <span class="si si-eye btn btn-success">
+                                                        </span>
+                                                    </a>
                                                 <?php } ?>
-                                                <a href="#" title="ubah data">
-                                                    <span class="si si-eye btn btn-success">
-                                                    </span>
-                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -136,7 +136,7 @@ if (isset($_SESSION['login']) == 0) {
 
             <!-- Apps Modal -->
             <div class="modal fade" id="one-modal-apps" tabindex="-1" role="dialog" aria-labelledby="one-modal-apps" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-top modal-md" role="document" id="get_modal">
+                <div class="modal-dialog modal-dialog-top modal-lg" role="document" id="get_modal">
                 </div>
             </div>
             <!-- END Apps Modal -->
@@ -145,6 +145,15 @@ if (isset($_SESSION['login']) == 0) {
         <script>
             $(document).ready(function() {
                 $('a#cetak').click(function() {
+                    var url = $(this).attr('href');
+                    $.ajax({
+                        url: url,
+                        success: function(response) {
+                            $('#get_modal').html(response);
+                        }
+                    });
+                });
+                $('a#view').click(function() {
                     var url = $(this).attr('href');
                     $.ajax({
                         url: url,
