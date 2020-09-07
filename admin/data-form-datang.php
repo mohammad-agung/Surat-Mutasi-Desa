@@ -110,7 +110,10 @@ if (isset($_SESSION['login']) == 0) {
                                                     <span class="badge badge-info">Belum Diarsip
                                                     </span>
                                                 <?php } else if ($row['status'] == 2) { ?>
-                                                    <span class="badge badge-success">Sudah Diarsip
+                                                    <span class="badge badge-success">Arsip Masuk
+                                                    </span>
+                                                <?php } else if ($row['status'] == 0) { ?>
+                                                    <span class="badge badge-danger">Arsip Tunda
                                                     </span>
                                                 <?php } ?>
                                             </td>

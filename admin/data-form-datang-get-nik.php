@@ -181,7 +181,7 @@ $query = mysqli_query($conn, "SELECT * FROM tbl_datadatang WHERE id_datadatang='
                         <div class="col-md-4 animated fadeIn">
                             <div class="form-group">
                                 <label for="val-provinsitujuan">Scan Surat Ket. Pindah</label>
-                                <a class="img-link img-link-zoom-in img-thumb img-lightbox" style="width: 100%;" href="" target="popup" onclick="window.open('../img/<?= htmlentities($row['foto_kk']); ?>','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">
+                                <a class="img-link img-link-zoom-in img-thumb img-lightbox" style="width: 100%;" href="" target="popup" onclick="window.open('../img/<?= htmlentities($row['scan_surat']); ?>','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">
                                     <img src="../img/<?= htmlentities($row['scan_surat']); ?>" class="img-fluid">
                                 </a>
                             </div>

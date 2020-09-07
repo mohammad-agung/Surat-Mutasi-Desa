@@ -98,11 +98,11 @@ if (isset($_SESSION['login']) == 0) {
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_pemohon']); ?>
                                             </td>
-                                            <td>
-                                                <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_arsip']); ?></em>
-                                            </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nomor_surat']); ?>
+                                            </td>
+                                            <td>
+                                                <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_arsip']); ?></em>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_user']); ?>
@@ -115,7 +115,7 @@ if (isset($_SESSION['login']) == 0) {
                                                     </a>
                                                 <?php } ?>
                                                 <a href="#" title="ubah data">
-                                                    <span class="fa fa-user-edit btn btn-warning">
+                                                    <span class="si si-eye btn btn-success">
                                                     </span>
                                                 </a>
                                             </td>

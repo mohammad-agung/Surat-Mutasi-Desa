@@ -5,8 +5,10 @@ if (isset($_SESSION['login']) == 0) {
     exit;
 } else {
     include '../controller/config.php';
+    include '../model/cetak_surat/function_cetak.php';
+    include '../model/cetak_surat/function_kirimdata.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah");
+    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.id_arsip_pindah,tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah WHERE tbl_arsip_pindah.status != 2");
 ?>
     <!doctype html>
     <html lang="en">
@@ -105,13 +107,13 @@ if (isset($_SESSION['login']) == 0) {
                                             </td>
                                             <td class="d-sm-table-cell text-center">
                                                 <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-pindah-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
+                                                    <a href="arsip-data-pindah-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
                                                         <span class="si si-printer btn btn-info">
                                                         </span>
                                                     </a>
                                                 <?php } ?>
                                                 <a href="#" title="ubah data">
-                                                    <span class="fa fa-user-edit btn btn-warning">
+                                                    <span class="si si-eye btn btn-success">
                                                     </span>
                                                 </a>
                                             </td>

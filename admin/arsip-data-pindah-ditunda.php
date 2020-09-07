@@ -5,10 +5,10 @@ if (isset($_SESSION['login']) == 0) {
     exit;
 } else {
     include '../controller/config.php';
-    include '../model/admin/function_datapindaharsip.php';
+    include '../model/admin/function_datadatangarsip.php';
     include '../model/admin/function_kirimdata.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT * FROM tbl_datapindah");
+    $query = mysqli_query($conn, "SELECT * FROM tbl_datapindah WHERE status=0");
 ?>
     <!doctype html>
     <html lang="en">
@@ -83,9 +83,9 @@ if (isset($_SESSION['login']) == 0) {
                                     <tr>
                                         <th class="text-center" style="width: 8%;">ID</th>
                                         <th style="width: 30%;">NIK Pemohon</th>
-                                        <th class=" d-sm-table-cell" style="width: 42%;">Nama Pemohon</th>
-                                        <th class="d-sm-table-cell" style="width: 20%;">Tanggal Masuk</th>
-                                        <th style="width: 10%;">Status</th>
+                                        <th class=" d-sm-table-cell" style="width: 35%;">Nama Pemohon</th>
+                                        <th>Tanggal Masuk</th>
+                                        <th class="d-sm-table-cell" style="width: 15%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,7 +93,7 @@ if (isset($_SESSION['login']) == 0) {
                                         <tr>
                                             <td class="text-center font-size-sm"><?= $id++; ?></td>
                                             <td class="font-w600 font-size-sm">
-                                                <a href="data-form-pindah-get-nik?id=<?= intval($row['id_datapindah']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData"><?= htmlentities($row['nik_pemohon']); ?></a>
+                                                <a href="#"><?= htmlentities($row['nik_pemohon']); ?></a>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_pemohon']); ?>
@@ -101,17 +101,15 @@ if (isset($_SESSION['login']) == 0) {
                                             <td>
                                                 <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_buat']); ?></em>
                                             </td>
-                                            <td class="d-sm-table-cell">
-                                                <?php if ($row['status'] == 1) { ?>
-                                                    <span class="badge badge-info">Belum Diarsip
+                                            <td class="d-sm-table-cell text-center">
+                                                <a href="#" class="mr-2" title="Lihat data">
+                                                    <span class="si si-eye btn btn-info">
                                                     </span>
-                                                <?php } else if ($row['status'] == 2) { ?>
-                                                    <span class="badge badge-success">Arsip Masuk
+                                                </a>
+                                                <a href="#" title="arsip data">
+                                                    <span class="si si-cloud-upload btn btn-success">
                                                     </span>
-                                                <?php } else if ($row['status'] == 0) { ?>
-                                                    <span class="badge badge-danger">Arsip Tunda
-                                                    </span>
-                                                <?php } ?>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
