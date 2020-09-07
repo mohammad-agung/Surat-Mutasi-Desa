@@ -11,13 +11,11 @@ function query($query)
     return $rows;
 }
 
-function arsipTerimaPindah($data)
+function arsipTerimaDatang($data)
 {
     global $conn;
 
     $namapemohonasal = htmlspecialchars($data["namapemohon"]);
-    $nomorkkasal = htmlspecialchars($data["nomorkk"]);
-    $namakepalakeluargaasal = htmlspecialchars($data["namakepalakeluarga"]);
     $alamatasal = htmlspecialchars($data["alamatasal"]);
     $alamattujuan = htmlspecialchars($data["alamattujuan"]);
     $kelurahanasal = htmlspecialchars($data["kelurahanasal"]);
@@ -28,8 +26,7 @@ function arsipTerimaPindah($data)
     $kotatujuan = htmlspecialchars($data["kotatujuan"]);
     $provinsiasal = htmlspecialchars($data["provinsiasal"]);
     $provinsitujuan = htmlspecialchars($data["provinsitujuan"]);
-    $alasanpindah = htmlspecialchars($data["alasanpindah"]);
-    $statuskkpindah = htmlspecialchars($data["statuskk"]);
+    $nomorsurat = htmlspecialchars($data["nomorsurat"]);
 
     $idpetugas = intval($data['id_petugas']);
     $idpemohon = intval($data['id_pemohon']);
@@ -41,12 +38,10 @@ function arsipTerimaPindah($data)
     // $queryIdPemohon = "SELECT id_datapindah FROM tbl_datapindah WHERE id_datapindah='$idpemohon'";
     // $queryIdPetugas = "SELECT id_user FROM tbl_admin WHERE id_user='$idpetugas'";
 
-    $query = "INSERT INTO tbl_arsip_pindah SET 
-                id_arsip_pindah = '',
+    $query = "INSERT INTO tbl_arsip_datang SET 
+                id_arsip_datang = '',
                 id_pemohon = '$idpemohon',
                 nama_pemohon = '$namapemohonasal',
-                nomor_kartu_keluarga = '$nomorkkasal',
-                nama_kepala_keluarga = '$namakepalakeluargaasal',
                 alamat_asal = '$alamatasal',
                 alamat_tujuan = '$alamattujuan',
                 kelurahan_asal = '$kelurahanasal',
@@ -57,9 +52,7 @@ function arsipTerimaPindah($data)
                 kota_tujuan = '$kotatujuan',
                 provinsi_asal = '$provinsiasal',
                 provinsi_tujuan = '$provinsitujuan',
-                status_kk = '$statuskkpindah',
-                alasanpindah = '$alasanpindah',
-                nomor_surat = '',
+                nomor_surat = '$nomorsurat',
                 id_petugas = '$idpetugas',
                 tanggal_arsip = '$tanggal',
                 status = '$status'";
@@ -69,14 +62,14 @@ function arsipTerimaPindah($data)
     return mysqli_affected_rows($conn);
 }
 
-function ubahDataPindah($data)
+function ubahDataDatang($data)
 {
     global $conn;
 
     $nikpemohonasal = htmlspecialchars($data["nikpemohon"]);
 
     // query insert data
-    $query = "UPDATE tbl_datapindah SET
+    $query = "UPDATE tbl_datadatang SET
 				status = 2
 			WHERE nik_pemohon = '$nikpemohonasal'
 			";
@@ -86,14 +79,14 @@ function ubahDataPindah($data)
     return mysqli_affected_rows($conn);
 }
 
-function pendingDataPindah($data)
+function pendingDataDatang($data)
 {
     global $conn;
 
     $nikpemohonasal = htmlspecialchars($data["nikpemohon"]);
 
     // query insert data
-    $query = "UPDATE tbl_datapindah SET
+    $query = "UPDATE tbl_datadatang SET
 				status = 0
 			WHERE nik_pemohon = '$nikpemohonasal'
 			";

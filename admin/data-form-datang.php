@@ -5,8 +5,10 @@ if (isset($_SESSION['login']) == 0) {
     exit;
 } else {
     include '../controller/config.php';
+    include '../model/admin/function_datadatangarsip.php';
+    include '../model/admin/function_kirimdata.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah");
+    $query = mysqli_query($conn, "SELECT * FROM tbl_datadatang");
 ?>
     <!doctype html>
     <html lang="en">
@@ -53,13 +55,13 @@ if (isset($_SESSION['login']) == 0) {
                     <div class="content content-full">
                         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                             <h1 class="flex-sm-fill h3 my-2">
-                                Arsip Data Pindah Penduduk
+                                Data Formulir Pindah Penduduk
                             </h1>
                             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">Arsip Diterima</li>
+                                    <li class="breadcrumb-item">Data Form</li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="#">Data Pindah</a>
+                                        <a class="link-fx" href="#">Pindah</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -79,12 +81,12 @@ if (isset($_SESSION['login']) == 0) {
                             <table class="table table-bordered table-striped table-vcenter js-dataTable-full table-responsive">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" style="width: 5%;">ID</th>
-                                        <th style="width: 20%;">NIK Pemohon</th>
-                                        <th class="d-sm-table-cell" style="width: 30%;">Nama Pemohon</th>
-                                        <th>Tanggal Arsip</th>
-                                        <th class="d-sm-table-cell" style="width: 20%;">Nama Petugas</th>
-                                        <th class="d-sm-table-cell" style="width: 15%;">Aksi</th>
+                                        <th class="text-center" style="width: 8%;">ID</th>
+                                        <th style="width: 25%;">NIK Pemohon</th>
+                                        <th class=" d-sm-table-cell" style="width: 25%;">Nama Pemohon</th>
+                                        <th class=" d-sm-table-cell" style="width: 22%;">Nomor Surat</th>
+                                        <th class="d-sm-table-cell" style="width: 20%;">Tanggal Masuk</th>
+                                        <th style="width: 10%;">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,28 +94,25 @@ if (isset($_SESSION['login']) == 0) {
                                         <tr>
                                             <td class="text-center font-size-sm"><?= $id++; ?></td>
                                             <td class="font-w600 font-size-sm">
-                                                <a href="#"><?= htmlentities($row['nik_pemohon']); ?></a>
+                                                <a href="data-form-datang-get-nik?id=<?= intval($row['id_datadatang']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData"><?= htmlentities($row['nik_pemohon']); ?></a>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_pemohon']); ?>
                                             </td>
-                                            <td>
-                                                <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_arsip']); ?></em>
-                                            </td>
                                             <td class="d-sm-table-cell font-size-sm">
-                                                <?= htmlentities($row['nama_user']); ?>
+                                                <?= htmlentities($row['nomor_surat_pindah']); ?>
                                             </td>
-                                            <td class="d-sm-table-cell text-center">
+                                            <td>
+                                                <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_buat']); ?></em>
+                                            </td>
+                                            <td class="d-sm-table-cell">
                                                 <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-pindah-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
-                                                        <span class="si si-printer btn btn-info">
-                                                        </span>
-                                                    </a>
-                                                <?php } ?>
-                                                <a href="#" title="ubah data">
-                                                    <span class="fa fa-user-edit btn btn-warning">
+                                                    <span class="badge badge-info">Belum Diarsip
                                                     </span>
-                                                </a>
+                                                <?php } else if ($row['status'] == 2) { ?>
+                                                    <span class="badge badge-success">Sudah Diarsip
+                                                    </span>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -134,15 +133,16 @@ if (isset($_SESSION['login']) == 0) {
 
             <!-- Apps Modal -->
             <div class="modal fade" id="one-modal-apps" tabindex="-1" role="dialog" aria-labelledby="one-modal-apps" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-top modal-md" role="document" id="get_modal">
+                <div class="modal-dialog modal-dialog-top modal-xl" role="document" id="get_modal">
                 </div>
             </div>
             <!-- END Apps Modal -->
 
         </div>
+
         <script>
             $(document).ready(function() {
-                $('a#cetak').click(function() {
+                $('a#getData').click(function() {
                     var url = $(this).attr('href');
                     $.ajax({
                         url: url,

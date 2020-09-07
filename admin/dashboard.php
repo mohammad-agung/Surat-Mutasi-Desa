@@ -43,7 +43,7 @@ if (isset($_SESSION['login']) == 0) {
                             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
                                 <div class="flex-sm-fill">
                                     <h1 class="font-w600 text-white mb-0 invisible" data-toggle="appear">Dashboard</h1>
-                                    <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Selamat Datang Administrator</h2>
+                                    <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Selamat Datang Administrator <?= $_SESSION['login']; ?></h2>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ if (isset($_SESSION['login']) == 0) {
                         <div class="col-12 col-lg-6">
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
-                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pindah Baru</div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pindah Hari Ini</div>
                                     <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataPindah; ?></div>
                                 </div>
                             </a>
@@ -82,7 +82,7 @@ if (isset($_SESSION['login']) == 0) {
                         <div class="col-12 col-lg-6">
                             <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                                 <div class="block-content block-content-full">
-                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pendatang Baru</div>
+                                    <div class="font-size-sm font-w600 text-uppercase text-muted">Data Pendatang Hari Ini</div>
                                     <div class="font-size-h2 font-w400 text-dark"><?= $countQueryDataDatang; ?></div>
                                 </div>
                             </a>

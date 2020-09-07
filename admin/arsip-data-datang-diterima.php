@@ -6,7 +6,7 @@ if (isset($_SESSION['login']) == 0) {
 } else {
     include '../controller/config.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah");
+    $query = mysqli_query($conn, "SELECT tbl_arsip_datang.nama_pemohon,tbl_arsip_datang.tanggal_arsip,tbl_arsip_datang.status,tbl_arsip_datang.nomor_surat,tbl_admin.nama_user,tbl_datadatang.nik_pemohon FROM tbl_arsip_datang JOIN tbl_admin ON tbl_arsip_datang.id_petugas = tbl_admin.id_user JOIN tbl_datadatang ON tbl_arsip_datang.id_pemohon = tbl_datadatang.id_datadatang");
 ?>
     <!doctype html>
     <html lang="en">
@@ -53,13 +53,13 @@ if (isset($_SESSION['login']) == 0) {
                     <div class="content content-full">
                         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                             <h1 class="flex-sm-fill h3 my-2">
-                                Arsip Data Pindah Penduduk
+                                Arsip Data Penduduk Datang
                             </h1>
                             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                                 <ol class="breadcrumb breadcrumb-alt">
                                     <li class="breadcrumb-item">Arsip Diterima</li>
                                     <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="#">Data Pindah</a>
+                                        <a class="link-fx" href="#">Data Pendatang</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -81,7 +81,8 @@ if (isset($_SESSION['login']) == 0) {
                                     <tr>
                                         <th class="text-center" style="width: 5%;">ID</th>
                                         <th style="width: 20%;">NIK Pemohon</th>
-                                        <th class="d-sm-table-cell" style="width: 30%;">Nama Pemohon</th>
+                                        <th class="d-sm-table-cell" style="width: 25%;">Nama Pemohon</th>
+                                        <th>Nomor Surat Pindah</th>
                                         <th>Tanggal Arsip</th>
                                         <th class="d-sm-table-cell" style="width: 20%;">Nama Petugas</th>
                                         <th class="d-sm-table-cell" style="width: 15%;">Aksi</th>
@@ -101,11 +102,14 @@ if (isset($_SESSION['login']) == 0) {
                                                 <em class="text-muted font-size-sm"><?= htmlentities($row['tanggal_arsip']); ?></em>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
+                                                <?= htmlentities($row['nomor_surat']); ?>
+                                            </td>
+                                            <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_user']); ?>
                                             </td>
                                             <td class="d-sm-table-cell text-center">
                                                 <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-pindah-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
+                                                    <a href="arsip-data-datang-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
                                                         <span class="si si-printer btn btn-info">
                                                         </span>
                                                     </a>

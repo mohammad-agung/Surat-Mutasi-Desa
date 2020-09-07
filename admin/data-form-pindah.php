@@ -93,7 +93,7 @@ if (isset($_SESSION['login']) == 0) {
                                         <tr>
                                             <td class="text-center font-size-sm"><?= $id++; ?></td>
                                             <td class="font-w600 font-size-sm">
-                                                <a href="data-form-pindah-get-nik?nik=<?= htmlentities($row['nik_pemohon']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData"><?= htmlentities($row['nik_pemohon']); ?></a>
+                                                <a href="data-form-pindah-get-nik?id=<?= intval($row['id_datapindah']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData"><?= htmlentities($row['nik_pemohon']); ?></a>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_pemohon']); ?>

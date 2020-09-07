@@ -11,9 +11,11 @@ function query($query)
     return $rows;
 }
 
-function tambahDataPindah($data)
+function tambahDataDatang($data)
 {
     global $conn;
+
+    $nomorsuratpindah = htmlspecialchars($data["nomorsuratpindah"]);
 
     // Data Daerah Asal
     $nomorkkasal = htmlspecialchars($data["nomorkartukeluargadaerahasal"]);
@@ -25,13 +27,16 @@ function tambahDataPindah($data)
     $kotaasal = htmlspecialchars($data["kabupatenkotadaerahasal"]);
     $kecamatanasal = htmlspecialchars($data["kecamatandaerahasal"]);
     $provinsiasal = htmlspecialchars($data["provinsidaerahasal"]);
-    $kodeposasal = htmlspecialchars($data["kodeposdaerahasal"]);
-    $teleponasal = htmlspecialchars($data["notelpdaerahasal"]);
+    $kodeposasal = htmlspecialchars($data["kodepos"]);
+    $teleponasal = htmlspecialchars($data["notelp"]);
     $nikpemohonasal = $data["nikpemohon"];
     $namapemohonasal = htmlspecialchars($data["namapemohon"]);
 
     // Data Kepindahan
-    $alasanpindah = htmlspecialchars($data["alasanpindah"]);
+    $nomorkkdaerahtujuan = htmlspecialchars($data['nomorkartukeluargadaerahtujuan']);
+    $nikkepalakeluarga = htmlspecialchars($data['nikkepalakeluarga']);
+    $namakepalakeluargatujuan = htmlspecialchars($data["namakepalakeluargadaerahtujuan"]);
+    $tanggal_datang = htmlspecialchars($data["tanggalkedatangan"]);
     $alamattujuan = htmlspecialchars($data["alamatdaerahtujuan"]);
     $rttujuan = htmlspecialchars($data["nomorrtdaerahtujuan"]);
     $rwtujuan = htmlspecialchars($data["nomorrwdaerahtujuan"]);
@@ -39,9 +44,7 @@ function tambahDataPindah($data)
     $kotatujuan = htmlspecialchars($data["kabupatenkotadaerahtujuan"]);
     $kecamatantujuan = htmlspecialchars($data["kecamatandaerahtujuan"]);
     $provinsitujuan = htmlspecialchars($data["provinsidaerahtujuan"]);
-    $statuskktidakpindah = htmlspecialchars($data["statuskktidakpindah"]);
-    $statuskkpindah = htmlspecialchars($data["statuskkpindah"]);
-
+    $statuskkpindah = htmlspecialchars($data["statuskk"]);
     // Berkas Pendukung
     $foto_ttd = uploadTTD();
     if (!$foto_ttd) {
@@ -55,17 +58,17 @@ function tambahDataPindah($data)
     }
     $fotoktp = date('d-m-Y') . '-' . $foto_ktp;
 
-    $foto_kk = uploadKK();
-    if (!$foto_kk) {
+    $scan_surat = uploadScan();
+    if (!$scan_surat) {
         return false;
     }
-    $fotokk = date('d-m-Y') . '-' . $foto_kk;
+    $scansurat = date('d-m-Y') . '-' . $scan_surat;
 
     // status dan tanggal
     $tanggal = date("Y-m-d");
     $status = 1;
 
-    $query = "INSERT INTO tbl_datapindah VALUES('','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$alasanpindah','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskktidakpindah','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$fotokk')";
+    $query = "INSERT INTO tbl_datadatang VALUES('','$nomorsuratpindah','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$nomorkkdaerahtujuan','$nikkepalakeluarga','$namakepalakeluargatujuan','$tanggal_datang','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$scansurat')";
 
     mysqli_query($conn, $query);
 
@@ -74,10 +77,10 @@ function tambahDataPindah($data)
 
 function uploadKtp()
 {
-    $namaFile = $_FILES['foto_ktp']['name'];
-    $ukuranFile = $_FILES['foto_ktp']['size'];
-    $error = $_FILES['foto_ktp']['error'];
-    $tmpName = $_FILES['foto_ktp']['tmp_name'];
+    $namaFile = $_FILES['fotoktp']['name'];
+    $ukuranFile = $_FILES['fotoktp']['size'];
+    $error = $_FILES['fotoktp']['error'];
+    $tmpName = $_FILES['fotoktp']['tmp_name'];
 
 
     // cek apakah tidak ada gambar di upload
@@ -125,12 +128,12 @@ function uploadKtp()
     return $namaFileBaruKTP;
 }
 
-function uploadKK()
+function uploadScan()
 {
-    $namaFile = $_FILES['foto_kk']['name'];
-    $ukuranFile = $_FILES['foto_kk']['size'];
-    $error = $_FILES['foto_kk']['error'];
-    $tmpName = $_FILES['foto_kk']['tmp_name'];
+    $namaFile = $_FILES['scansuratpindah']['name'];
+    $ukuranFile = $_FILES['scansuratpindah']['size'];
+    $error = $_FILES['scansuratpindah']['error'];
+    $tmpName = $_FILES['scansuratpindah']['tmp_name'];
 
 
     // cek apakah tidak ada gambar di upload
@@ -180,10 +183,10 @@ function uploadKK()
 
 function uploadTTD()
 {
-    $namaFile = $_FILES['foto_ttd']['name'];
-    $ukuranFile = $_FILES['foto_ttd']['size'];
-    $error = $_FILES['foto_ttd']['error'];
-    $tmpName = $_FILES['foto_ttd']['tmp_name'];
+    $namaFile = $_FILES['fotottd']['name'];
+    $ukuranFile = $_FILES['fotottd']['size'];
+    $error = $_FILES['fotottd']['error'];
+    $tmpName = $_FILES['fotottd']['tmp_name'];
 
 
     // cek apakah tidak ada gambar di upload

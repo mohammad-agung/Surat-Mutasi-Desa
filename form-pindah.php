@@ -2,7 +2,7 @@
 $thisPage = 'FORM';
 require './controller/config.php';
 include "./model/user/function_datapindah.php";
-include "./model/user/function_kirimdatapindah.php";
+include "./model/user/function_kirimdata.php";
 include "./view/user/header.php";
 ?>
 <title>Form Pindah</title>

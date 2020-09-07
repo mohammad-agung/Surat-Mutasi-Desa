@@ -1,5 +1,8 @@
 <?php
 $thisPage = 'FORM';
+require './controller/config.php';
+include "./model/user/function_datadatang.php";
+include "./model/user/function_kirimdata.php";
 include "./view/user/header.php";
 ?>
 <title>Form Datang</title>
@@ -16,9 +19,16 @@ include "./view/user/header.php";
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="" method="post" role="form" class="php-email-form" data-aos="fade-up" enctype="multipart/form-data">
+                    <form method="post" class="php-email-form" enctype="multipart/form-data">
                         <h4 class="text-center text-uppercase">Data Daerah Asal</h4>
                         <hr>
+                        <div class="form-row">
+                            <div class="col-md-12 form-group">
+                                <label for="nomorsuratpindah">Nomor Surat Pindah</label>
+                                <input type="number" name="nomorsuratpindah" class="form-control" id="nomorsuratpindah" placeholder="Nomor Surat Pindah" data-rule="minlen:16" data-msg="Please enter at least 16 numbers" />
+                                <div class="validate"></div>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label for="nomorkartukeluarga">Nomor Kartu Keluarga</label>
@@ -217,12 +227,7 @@ include "./view/user/header.php";
                             </div>
                         </div>
                         <hr>
-                        <div class="mb-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit" name="kirim">Kirim Data</button></div>
+                        <div class="text-center"><button type="submit" name="kirimdatadatang">Kirim Data</button></div>
                     </form>
                 </div>
             </div>

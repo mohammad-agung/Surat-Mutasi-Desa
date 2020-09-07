@@ -74,7 +74,7 @@
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
+                        <a class="nav-main-link" href="arsip-data-datang-diterima">
                             <span class="nav-main-link-name">Data Diterima</span>
                         </a>
                     </li>
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
+                        <a class="nav-main-link" href="data-form-datang">
                             <span class="nav-main-link-name">Data Datang</span>
                         </a>
                     </li>
@@ -112,7 +112,7 @@
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="#">
+                        <a class="nav-main-link" href="page-manage">
                             <span class="nav-main-link-name">Kontak Kami</span>
                         </a>
                     </li>
