@@ -65,7 +65,7 @@ function tambahDataPindah($data)
     $tanggal = date("Y-m-d");
     $status = 1;
 
-    $query = "INSERT INTO tbl_datapindah VALUES('','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$alasanpindah','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskktidakpindah','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$fotokk')";
+    $query = "INSERT INTO tbl_datapindah VALUES('','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$alasanpindah','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskktidakpindah','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$fotokk','')";
 
     mysqli_query($conn, $query);
 

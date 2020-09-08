@@ -1,4 +1,6 @@
 <?php
+$pages = 'arsip';
+$thisPage = 'arsip-pindah';
 session_start();
 if (isset($_SESSION['login']) == 0) {
     header('Location: index');
@@ -8,7 +10,7 @@ if (isset($_SESSION['login']) == 0) {
     include '../model/admin/function_datapindaharsip.php';
     include '../model/admin/function_kirimdata.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.id_arsip_pindah,tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah WHERE tbl_arsip_pindah.status != 2");
+    $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.id_arsip_pindah,tbl_arsip_pindah.nama_pemohon,tbl_arsip_pindah.tanggal_arsip,tbl_arsip_pindah.status,tbl_admin.nama_user,tbl_datapindah.nik_pemohon FROM tbl_arsip_pindah JOIN tbl_admin ON tbl_arsip_pindah.id_petugas = tbl_admin.id_user JOIN tbl_datapindah ON tbl_arsip_pindah.id_pemohon = tbl_datapindah.id_datapindah");
 ?>
     <!doctype html>
     <html lang="en">
@@ -57,14 +59,6 @@ if (isset($_SESSION['login']) == 0) {
                             <h1 class="flex-sm-fill h3 my-2">
                                 Arsip Data Pindah Penduduk
                             </h1>
-                            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                                <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">Arsip Diterima</li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="#">Data Pindah</a>
-                                    </li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>
@@ -94,7 +88,7 @@ if (isset($_SESSION['login']) == 0) {
                                         <tr>
                                             <td class="text-center font-size-sm"><?= $id++; ?></td>
                                             <td class="font-w600 font-size-sm">
-                                                <a href="#"><?= htmlentities($row['nik_pemohon']); ?></a>
+                                                <?= htmlentities($row['nik_pemohon']); ?>
                                             </td>
                                             <td class="d-sm-table-cell font-size-sm">
                                                 <?= htmlentities($row['nama_pemohon']); ?>
@@ -111,11 +105,11 @@ if (isset($_SESSION['login']) == 0) {
                                                         <span class="si si-printer btn btn-info">
                                                         </span>
                                                     </a>
-                                                    <a href="arsip-data-pindah-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" title=" ubah data" data-toggle="modal" data-target="#one-modal-apps" id="view">
-                                                        <span class="si si-eye btn btn-success">
-                                                        </span>
-                                                    </a>
                                                 <?php } ?>
+                                                <a href="arsip-data-pindah-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" title=" ubah data" data-toggle="modal" data-target="#one-modal-apps" id="view">
+                                                    <span class="si si-eye btn btn-success">
+                                                    </span>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>

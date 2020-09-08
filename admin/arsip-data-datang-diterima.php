@@ -1,12 +1,16 @@
 <?php
+$pages = 'arsip';
+$thisPage = 'arsip-datang';
 session_start();
 if (isset($_SESSION['login']) == 0) {
     header('Location: index');
     exit;
 } else {
     include '../controller/config.php';
+    include '../model/admin/function_datadatangarsip.php';
+    include '../model/admin/function_kirimdata.php';
     $id = 1;
-    $query = mysqli_query($conn, "SELECT tbl_arsip_datang.id_arsip_datang,tbl_arsip_datang.nama_pemohon,tbl_arsip_datang.tanggal_arsip,tbl_arsip_datang.status,tbl_arsip_datang.nomor_surat,tbl_admin.nama_user,tbl_datadatang.nik_pemohon FROM tbl_arsip_datang JOIN tbl_admin ON tbl_arsip_datang.id_petugas = tbl_admin.id_user JOIN tbl_datadatang ON tbl_arsip_datang.id_pemohon = tbl_datadatang.id_datadatang");
+    $query = mysqli_query($conn, "SELECT tbl_arsip_datang.id_arsip_datang,tbl_arsip_datang.nama_pemohon,tbl_arsip_datang.tanggal_arsip,tbl_arsip_datang.status,tbl_arsip_datang.nomor_surat,tbl_admin.nama_user,tbl_datadatang.nik_pemohon,tbl_datadatang.id_datadatang FROM tbl_arsip_datang JOIN tbl_admin ON tbl_arsip_datang.id_petugas = tbl_admin.id_user JOIN tbl_datadatang ON tbl_arsip_datang.id_pemohon = tbl_datadatang.id_datadatang");
 ?>
     <!doctype html>
     <html lang="en">
@@ -55,14 +59,6 @@ if (isset($_SESSION['login']) == 0) {
                             <h1 class="flex-sm-fill h3 my-2">
                                 Arsip Data Penduduk Datang
                             </h1>
-                            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                                <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">Arsip Diterima</li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="#">Data Pendatang</a>
-                                    </li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>
@@ -109,12 +105,12 @@ if (isset($_SESSION['login']) == 0) {
                                             </td>
                                             <td class="d-sm-table-cell text-center">
                                                 <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-datang-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
+                                                    <a href="arsip-data-datang-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
                                                         <span class="si si-printer btn btn-info">
                                                         </span>
                                                     </a>
                                                 <?php } ?>
-                                                <a href="data-form-datang-get-nik?id=<?= intval($row['id_datadatang']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="getData"" title=" ubah data">
+                                                <a href="arsip-data-datang-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="view"" title=" ubah data">
                                                     <span class="si si-eye btn btn-success">
                                                     </span>
                                                 </a>
@@ -138,22 +134,29 @@ if (isset($_SESSION['login']) == 0) {
 
             <!-- Apps Modal -->
             <div class="modal fade" id="one-modal-apps" tabindex="-1" role="dialog" aria-labelledby="one-modal-apps" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-top modal-md" role="document" id="get_modal">
+                <div class="modal-dialog modal-dialog-top modal-lg" role="document" id="get_modal">
                 </div>
             </div>
             <!-- END Apps Modal -->
 
         </div>
         <script>
-            $(document).ready(function() {
-                $('a#cetak').click(function() {
-                    var url = $(this).attr('href');
-                    $.ajax({
-                        url: url,
-                        success: function(response) {
-                            $('#get_modal').html(response);
-                        }
-                    });
+            $('a#cetak').click(function() {
+                var url = $(this).attr('href');
+                $.ajax({
+                    url: url,
+                    success: function(response) {
+                        $('#get_modal').html(response);
+                    }
+                });
+            });
+            $('a#view').click(function() {
+                var url = $(this).attr('href');
+                $.ajax({
+                    url: url,
+                    success: function(response) {
+                        $('#get_modal').html(response);
+                    }
                 });
             });
         </script>

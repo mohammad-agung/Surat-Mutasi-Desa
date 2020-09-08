@@ -27,13 +27,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nikpemohon">NIK Pemohon</label>
-                                    <input type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nama_pemohon">Nama Pemohon</label>
-                                    <input type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -41,13 +41,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nomorkartukeluarga">Nomor Kartu Keluarga</label>
-                                    <input type="text" id="val-nomorkartukeluarga" name="nomorkartukeluarga" class="form-control" required value="<?= htmlspecialchars($row['nomor_kartu_keluarga']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nomorkartukeluarga" name="nomorkartukeluarga" class="form-control" required value="<?= htmlspecialchars($row['nomor_kartu_keluarga']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-namakepalakeluarga">Nama Kepala Keluarga</label>
-                                    <input type="text" id="val-namakepalakeluarga" name="namakepalakeluarga" class="form-control" required value="<?= htmlentities($row['nama_kepala_keluarga']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-namakepalakeluarga" name="namakepalakeluarga" class="form-control" required value="<?= htmlentities($row['nama_kepala_keluarga']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -55,13 +55,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-alamatasal">Alamat Asal</label>
-                                    <input type="text" id="val-alamatasal" name="alamatasal" class="form-control" required value="<?= htmlentities($row['alamat_asal']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-alamatasal" name="alamatasal" class="form-control" required value="<?= htmlentities($row['alamat_asal']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-alamattujuan">Alamat Tujuan</label>
-                                    <input type="text" id="val-alamattujuan" name="alamattujuan" class="form-control" required value="<?= htmlentities($row['alamat_tujuan']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-alamattujuan" name="alamattujuan" class="form-control" required value="<?= htmlentities($row['alamat_tujuan']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -69,13 +69,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kelurahanasal">Desa / Kelurahan Asal</label>
-                                    <input type="text" id="val-kelurahanasal" name="kelurahanasal" class="form-control" required value="<?= htmlentities($row['kelurahan_asal']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kelurahanasal" name="kelurahanasal" class="form-control" required value="<?= htmlentities($row['kelurahan_asal']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kelurahantujuan">Desa / Kelurahan Tujuan</label>
-                                    <input type="text" id="val-kelurahantujuan" name="kelurahantujuan" class="form-control" required value="<?= htmlentities($row['kelurahan_tujuan']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kelurahantujuan" name="kelurahantujuan" class="form-control" required value="<?= htmlentities($row['kelurahan_tujuan']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -83,13 +83,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kecamatanasal">Kecamatan Asal</label>
-                                    <input type="text" id="val-kecamatanasal" name="kecamatanasal" class="form-control" required value="<?= htmlentities($row['kecamatan_asal']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kecamatanasal" name="kecamatanasal" class="form-control" required value="<?= htmlentities($row['kecamatan_asal']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kecamatantujuan">Kecamatan Tujuan</label>
-                                    <input type="text" id="val-kecamatantujuan" name="kecamatantujuan" class="form-control" required value="<?= htmlentities($row['kecamatan_tujuan']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kecamatantujuan" name="kecamatantujuan" class="form-control" required value="<?= htmlentities($row['kecamatan_tujuan']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -97,13 +97,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kabkotaasal">Kabupaten / Kota Asal</label>
-                                    <input type="text" id="val-kabkotaasal" name="kotaasal" class="form-control" required value="<?= htmlentities($row['kota_asal']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kabkotaasal" name="kotaasal" class="form-control" required value="<?= htmlentities($row['kota_asal']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-kabkotatujuan">Kabupaten / Kota Tujuan</label>
-                                    <input type="text" id="val-kabkotatujuan" name="kotatujuan" class="form-control" required value="<?= htmlentities($row['kota_tujuan']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-kabkotatujuan" name="kotatujuan" class="form-control" required value="<?= htmlentities($row['kota_tujuan']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -111,13 +111,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-provinsiasal">Provinsi Asal</label>
-                                    <input type="text" id="val-provinsiasal" name="provinsiasal" class="form-control" required value="<?= htmlentities($row['provinsi_asal']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-provinsiasal" name="provinsiasal" class="form-control" required value="<?= htmlentities($row['provinsi_asal']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-provinsitujuan">Provinsi Tujuan</label>
-                                    <input type="text" id="val-provinsitujuan" name="provinsitujuan" class="form-control" required value="<?= htmlentities($row['provinsi_tujuan']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-provinsitujuan" name="provinsitujuan" class="form-control" required value="<?= htmlentities($row['provinsi_tujuan']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -125,13 +125,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-alasanpindah">Alasan Pindah</label>
-                                    <input type="text" id="val-alasanpindah" name="alasanpindah" class="form-control" required value="<?= htmlentities($row['alasanpindah']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-alasanpindah" name="alasanpindah" class="form-control" required value="<?= htmlentities($row['alasanpindah']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-statuskk">Status KK</label>
-                                    <input readonly type="text" id="val-statuskk" name="statuskk" class="form-control" required value="<?= htmlspecialchars($row['status_kk']); ?>">
+                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-statuskk" name="statuskk" class="form-control" required value="<?= htmlspecialchars($row['status_kk']); ?>">
                                 </div>
                             </div>
                         </div>

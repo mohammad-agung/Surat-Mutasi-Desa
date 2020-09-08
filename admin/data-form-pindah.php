@@ -1,4 +1,6 @@
 <?php
+$pages = 'data';
+$thisPage = 'pindah';
 session_start();
 if (isset($_SESSION['login']) == 0) {
     header('Location: index');
@@ -57,14 +59,6 @@ if (isset($_SESSION['login']) == 0) {
                             <h1 class="flex-sm-fill h3 my-2">
                                 Data Formulir Pindah Penduduk
                             </h1>
-                            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                                <ol class="breadcrumb breadcrumb-alt">
-                                    <li class="breadcrumb-item">Data Form</li>
-                                    <li class="breadcrumb-item" aria-current="page">
-                                        <a class="link-fx" href="#">Pindah</a>
-                                    </li>
-                                </ol>
-                            </nav>
                         </div>
                     </div>
                 </div>

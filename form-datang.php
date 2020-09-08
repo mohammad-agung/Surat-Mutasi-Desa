@@ -25,7 +25,7 @@ include "./view/user/header.php";
                         <div class="form-row">
                             <div class="col-md-12 form-group">
                                 <label for="nomorsuratpindah">Nomor Surat Pindah</label>
-                                <input type="number" name="nomorsuratpindah" class="form-control" id="nomorsuratpindah" placeholder="Nomor Surat Pindah" data-rule="minlen:16" data-msg="Please enter at least 16 numbers" />
+                                <input type="text" name="nomorsuratpindah" class="form-control" id="nomorsuratpindah" placeholder="Nomor Surat Pindah" data-rule="minlen:16" data-msg="Please enter at least 16 numbers" />
                                 <div class="validate"></div>
                             </div>
                         </div>
@@ -181,19 +181,19 @@ include "./view/user/header.php";
                             </div>
                             <div class="col-md-6 form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskk" id="numpangkk" value="numpangkk">
+                                    <input class="form-check-input" type="radio" name="statuskk" id="numpangkk" value="Numpang Kartu Keluarga">
                                     <label class="form-check-label" for="numpangkk">
                                         Numpang KK
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskk" id="membuatkkbaru" value="membuatkkbaru">
+                                    <input class="form-check-input" type="radio" name="statuskk" id="membuatkkbaru" value="Membuat Kartu Keluarga Baru">
                                     <label class="form-check-label" for="membuatkkbaru">
                                         Membuat KK Baru
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskk" id="nomorkktetap" value="nomorkktetap">
+                                    <input class="form-check-input" type="radio" name="statuskk" id="nomorkktetap" value="Nomor Kartu Keluarga Tetap">
                                     <label class="form-check-label" for="nomorkktetap">
                                         Nomor KK Tetap
                                     </label>

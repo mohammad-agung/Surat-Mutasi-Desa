@@ -1,4 +1,5 @@
 <?php
+$thisPage = 'dashboard';
 session_start();
 if (isset($_SESSION['login']) == 0) {
     header('Location: index');

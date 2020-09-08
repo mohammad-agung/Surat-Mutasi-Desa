@@ -23,16 +23,16 @@ if (isset($_POST['ubahprofil'])) {
 
             $con = mysqli_query($conn, "UPDATE tbl_admin set password='$newhashedpass',username='$username',nama_user='$namauser' where username='$namauserlama'");
             echo "
-            <script>
-                alert('Akun Berhasil Di Rubah, Silahkan Login Kembali');
-                document.location.href = '../../admin/controller/logout.php';
-            </script>";
+                <script>
+                    alert('Akun Berhasil Di Rubah, Silahkan Login Kembali');
+                    document.location.href = '../../admin/controller/logout.php';
+                </script>";
         } else {
             echo "
-                    <script>
-                        alert('Password Lama Salah!!');
-                        window.location=history.go(-1);
-                    </script>";
+                <script>
+                    alert('Password Lama Salah!!');
+                    window.location=history.go(-1);
+                </script>";
         }
     } else {
         echo "

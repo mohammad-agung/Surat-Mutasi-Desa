@@ -183,19 +183,19 @@ include "./view/user/header.php";
                             </div>
                             <div class="col-md-6 form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="numpangkk" value="numpangkk">
+                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="numpangkk" value="Numpang Kartu Keluarga">
                                     <label class="form-check-label" for="numpangkk">
                                         Numpang KK
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="membuatkkbaru" value="membuatkkbaru">
+                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="membuatkkbaru" value="Membuat Kartu Keluarga Baru">
                                     <label class="form-check-label" for="membuatkkbaru">
                                         Membuat KK Baru
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="nomorkktetap" value="nomorkktetap">
+                                    <input class="form-check-input" type="radio" name="statuskkpindah" id="nomorkktetap" value="Nomor Kartu Keluarga Tetap">
                                     <label class="form-check-label" for="nomorkktetap">
                                         Nomor KK Tetap
                                     </label>

@@ -68,7 +68,7 @@ function tambahDataDatang($data)
     $tanggal = date("Y-m-d");
     $status = 1;
 
-    $query = "INSERT INTO tbl_datadatang VALUES('','$nomorsuratpindah','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$nomorkkdaerahtujuan','$nikkepalakeluarga','$namakepalakeluargatujuan','$tanggal_datang','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$scansurat')";
+    $query = "INSERT INTO tbl_datadatang VALUES('','$nomorsuratpindah','$nomorkkasal', '$namakepalakeluargaasal','$alamatasal','$rtasal','$rwasal','$kelurahanasal','$kotaasal','$kecamatanasal','$provinsiasal','$kodeposasal','$teleponasal','$nikpemohonasal','$namapemohonasal','$nomorkkdaerahtujuan','$nikkepalakeluarga','$namakepalakeluargatujuan','$tanggal_datang','$alamattujuan','$rttujuan','$rwtujuan','$kelurahantujuan','$kotatujuan','$kecamatantujuan','$provinsitujuan','$statuskkpindah','$tanggal','$status','$fotottd','$fotoktp','$scansurat','')";
 
     mysqli_query($conn, $query);
 
