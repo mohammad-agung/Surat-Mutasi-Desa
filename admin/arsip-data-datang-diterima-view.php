@@ -27,7 +27,7 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_datang.nomor_surat,tbl_arsip_data
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="val-nomorsuratpindah">Nomor Surat Pindah</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nomorsuratpindah" name="nomorsuratpindah" class="form-control" required value="<?= htmlspecialchars($row['nomor_surat']); ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nomorsuratpindah" name="nomorsuratpindah" class="form-control" required value="<?= htmlspecialchars($row['nomor_surat']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -35,13 +35,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_datang.nomor_surat,tbl_arsip_data
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nikpemohon">NIK Pemohon</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nama_pemohon">Nama Pemohon</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
                                 </div>
                             </div>
                         </div>

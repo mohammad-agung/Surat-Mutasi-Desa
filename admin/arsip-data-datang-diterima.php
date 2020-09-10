@@ -76,12 +76,12 @@ if (isset($_SESSION['login']) == 0) {
                                 <thead>
                                     <tr>
                                         <th class="text-center" style="width: 5%;">ID</th>
-                                        <th style="width: 20%;">NIK Pemohon</th>
+                                        <th>NIK Pemohon</th>
                                         <th class="d-sm-table-cell" style="width: 25%;">Nama Pemohon</th>
                                         <th>Nomor Surat Pindah</th>
                                         <th>Tanggal Arsip</th>
                                         <th class="d-sm-table-cell" style="width: 20%;">Nama Petugas</th>
-                                        <th class="d-sm-table-cell" style="width: 15%;">Aksi</th>
+                                        <th class="d-sm-table-cell" style="width: 20%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,14 +104,16 @@ if (isset($_SESSION['login']) == 0) {
                                                 <?= htmlentities($row['nama_user']); ?>
                                             </td>
                                             <td class="d-sm-table-cell text-center">
-                                                <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-datang-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
-                                                        <span class="si si-printer btn btn-info">
-                                                        </span>
-                                                    </a>
-                                                <?php } ?>
-                                                <a href="arsip-data-datang-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="view"" title=" ubah data">
-                                                    <span class="si si-eye btn btn-success">
+                                                <a href="surat_datang?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" class="mr-2" title="cetak surat">
+                                                    <span class="si si-printer btn btn-info">
+                                                    </span>
+                                                </a>
+                                                <a href="arsip-data-datang-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_datang']); ?>" data-toggle="modal" data-target="#one-modal-apps" id="view" title=" ubah data">
+                                                    <span class="si si-eye btn btn-success mr-2">
+                                                    </span>
+                                                </a>
+                                                <a href="arsip-data-datang-diterima?nik=<?= htmlentities($row['nik_pemohon']); ?>&&id=<?= intval($row['id_arsip_datang']); ?>&&action=del&&post=datang" title=" hapus data" onclick="return confirm('Do you realy want to delete ?')">
+                                                    <span class="si si-trash btn btn-danger">
                                                     </span>
                                                 </a>
                                             </td>
@@ -141,15 +143,6 @@ if (isset($_SESSION['login']) == 0) {
 
         </div>
         <script>
-            $('a#cetak').click(function() {
-                var url = $(this).attr('href');
-                $.ajax({
-                    url: url,
-                    success: function(response) {
-                        $('#get_modal').html(response);
-                    }
-                });
-            });
             $('a#view').click(function() {
                 var url = $(this).attr('href');
                 $.ajax({

@@ -1,5 +1,30 @@
 <?php
 
+error_reporting(0);
+
+if ($_GET['action'] == 'del' && $_GET['post'] == 'datang') {
+    $id = intval($_GET['id']);
+    $nik = htmlspecialchars($_GET['nik']);
+    mysqli_query($conn, "UPDATE tbl_datadatang SET status=0,keterangan='Surat Dipending ,Harap Cek Data Di Kantor Desa' WHERE nik_pemohon='$nik'");
+    mysqli_query($conn, "DELETE from tbl_arsip_datang where id_arsip_datang='$id'");
+    echo "
+    <script>
+        alert('Data Dihapus');
+        document.location.href = 'arsip-data-datang-diterima';
+    </script>";
+}
+
+if ($_GET['action'] == 'del' && $_GET['post'] == 'pindah') {
+    $id = intval($_GET['id']);
+    $nik = htmlspecialchars($_GET['nik']);
+    mysqli_query($conn, "UPDATE tbl_datapindah SET status=0,keterangan='Surat Dipending ,Harap Cek Data Di Kantor Desa' WHERE nik_pemohon='$nik'");
+    mysqli_query($conn, "DELETE from tbl_arsip_pindah where id_arsip_pindah='$id'");
+    echo "
+        <script>
+            alert('Data Dihapus');
+            document.location.href = 'arsip-data-pindah-diterima';
+        </script>";
+}
 // ===================================================================
 
 if (isset($_POST["arsipterimapindah"])) {
@@ -82,19 +107,6 @@ if (isset($_POST["arsipubahpindah"])) {
         echo "
             <script>
                 alert('Data Gagal Di Ubah');
-                document.location.href = 'arsip-data-pindah-diterima';
-            </script>";
-    }
-}
-
-if (isset($_POST["cetaksuratpindah"])) {
-    if (cetakSuratPindah($_POST) > 0) {
-        $tbl_arsip_pindah = $_POST['id'];
-        include '../model/template_surat/surat_pindah.php';
-    } else {
-        echo "
-            <script>
-                alert('Ada Kesalahan Saat Mencetak Surat. SIlahkan Coba Lagi');
                 document.location.href = 'arsip-data-pindah-diterima';
             </script>";
     }
@@ -187,20 +199,6 @@ if (isset($_POST["arsipubahdatang"])) {
             </script>";
     }
 }
-
-if (isset($_POST["cetaksuratdatang"])) {
-    if (cetakSuratDatang($_POST) > 0) {
-        $tbl_arsip_pindah = $_POST['id'];
-        include '../model/template_surat/surat_datang.php';
-    } else {
-        echo "
-            <script>
-                alert('Ada Kesalahan Saat Mencetak Surat. SIlahkan Coba Lagi');
-                document.location.href = 'arsip-data-datang-diterima';
-            </script>";
-    }
-}
-
 
 // ==================================================================================
 if (isset($_POST["tambahkontak"])) {

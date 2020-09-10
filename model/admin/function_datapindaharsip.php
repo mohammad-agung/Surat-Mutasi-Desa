@@ -57,7 +57,6 @@ function arsipTerimaPindah($data)
                 provinsi_tujuan = '$provinsitujuan',
                 status_kk = '$statuskkpindah',
                 alasanpindah = '$alasanpindah',
-                nomor_surat = '',
                 id_petugas = '$idpetugas',
                 tanggal_arsip = '$tanggal',
                 status = '$status'";
@@ -233,22 +232,5 @@ function ubahNIK($data)
     return mysqli_affected_rows($conn);
 }
 
-function cetakSuratPindah($data)
-{
-    global $conn;
-
-    $id = intval($data["id"]);
-    $nomorsurat = htmlspecialchars($data["nomorsurat"]);
-
-    $query = "UPDATE tbl_arsip_pindah SET
-				nomor_surat = '$nomorsurat',
-                status = 2
-			WHERE id_arsip_pindah = '$id'
-			";
-
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}
 
 // =====================================================================

@@ -32,37 +32,19 @@
             </li>
             <li class="nav-main-heading">Arsip</li>
             <li class="nav-main-item">
-                <a class="nav-main-link <?php if ($pages == 'surat') echo 'active'; ?> nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                <a class="nav-main-link <?php if ($pages == 'arsip') echo 'active'; ?> nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                     <i class="nav-main-link-icon si si-layers"></i>
                     <span class="nav-main-link-name">Surat</span>
                 </a>
                 <ul class="nav-main-submenu">
                     <li class="nav-main-item">
-                        <a class="nav-main-link <?php if ($thisPage == 'surat-pindah') echo 'active'; ?>" href="#">
-                            <span class="nav-main-link-name">Surat Pindah</span>
-                        </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link <?php if ($thisPage == 'surat-pindah') echo 'active'; ?>" href="#">
-                            <span class="nav-main-link-name">Surat Datang</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link <?php if ($pages == 'arsip') echo 'active'; ?> nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon si si-layers"></i>
-                    <span class="nav-main-link-name">Data Diterima</span>
-                </a>
-                <ul class="nav-main-submenu">
-                    <li class="nav-main-item">
                         <a class="nav-main-link <?php if ($thisPage == 'arsip-pindah') echo 'active'; ?>" href="arsip-data-pindah-diterima">
-                            <span class="nav-main-link-name">Data Pindah</span>
+                            <span class="nav-main-link-name">Pindah</span>
                         </a>
                     </li>
                     <li class="nav-main-item">
                         <a class="nav-main-link <?php if ($thisPage == 'arsip-datang') echo 'active'; ?>" href="arsip-data-datang-diterima">
-                            <span class="nav-main-link-name">Data Datang</span>
+                            <span class="nav-main-link-name">Datang</span>
                         </a>
                     </li>
                 </ul>

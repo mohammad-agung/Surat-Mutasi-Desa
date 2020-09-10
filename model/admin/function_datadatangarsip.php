@@ -92,7 +92,7 @@ function editDataDatang($data)
     $idpemohon = intval($data['id_pemohon']);
 
     $query = "UPDATE tbl_datadatang SET
-                nomor_surat_pindah = '$nomorsurat',
+                nomor_surat = '$nomorsurat',
                 nik_pemohon = '$nikpemohonasal',
                 nama_pemohon = '$namapemohonasal',
                 nomorkk_asal = '$nomorkkasal',
@@ -233,21 +233,3 @@ function ubahNIKDatang($data)
 }
 
 // ====================================================================
-
-function cetakSuratDatang($data)
-{
-    global $conn;
-
-    $id = intval($data["id"]);
-    $nomorsurat = htmlspecialchars($data["nomorsurat"]);
-
-    $query = "UPDATE tbl_arsip_datang SET
-				nomor_surat_cetak = '$nomorsurat',
-                status = 2
-			WHERE id_arsip_datang = '$id'
-			";
-
-    mysqli_query($conn, $query);
-
-    return mysqli_affected_rows($conn);
-}

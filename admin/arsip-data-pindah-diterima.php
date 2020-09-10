@@ -80,7 +80,7 @@ if (isset($_SESSION['login']) == 0) {
                                         <th class="d-sm-table-cell" style="width: 30%;">Nama Pemohon</th>
                                         <th>Tanggal Arsip</th>
                                         <th class="d-sm-table-cell" style="width: 20%;">Nama Petugas</th>
-                                        <th class="d-sm-table-cell" style="width: 15%;">Aksi</th>
+                                        <th class="d-sm-table-cell" style="width: 20%;">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -100,14 +100,16 @@ if (isset($_SESSION['login']) == 0) {
                                                 <?= htmlentities($row['nama_user']); ?>
                                             </td>
                                             <td class="d-sm-table-cell text-center">
-                                                <?php if ($row['status'] == 1) { ?>
-                                                    <a href="arsip-data-pindah-diterima-cetak?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" class="mr-2" title="cetak surat" data-toggle="modal" data-target="#one-modal-apps" id="cetak">
-                                                        <span class="si si-printer btn btn-info">
-                                                        </span>
-                                                    </a>
-                                                <?php } ?>
+                                                <a href="surat_pindah?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" class="mr-2" title="cetak surat">
+                                                    <span class="si si-printer btn btn-info">
+                                                    </span>
+                                                </a>
                                                 <a href="arsip-data-pindah-diterima-view?nik=<?= htmlentities($row['nik_pemohon']); ?>&id=<?= intval($row['id_arsip_pindah']); ?>" title=" ubah data" data-toggle="modal" data-target="#one-modal-apps" id="view">
-                                                    <span class="si si-eye btn btn-success">
+                                                    <span class="si si-eye btn btn-success mr-2">
+                                                    </span>
+                                                </a>
+                                                <a href="?nik=<?= htmlentities($row['nik_pemohon']); ?>&&id=<?= intval($row['id_arsip_pindah']); ?>&&action=del&&post=pindah" title=" hapus data" onclick="return confirm('Do you realy want to delete ?')">
+                                                    <span class="fa fa-trash btn btn-danger">
                                                     </span>
                                                 </a>
                                             </td>
@@ -138,15 +140,6 @@ if (isset($_SESSION['login']) == 0) {
         </div>
         <script>
             $(document).ready(function() {
-                $('a#cetak').click(function() {
-                    var url = $(this).attr('href');
-                    $.ajax({
-                        url: url,
-                        success: function(response) {
-                            $('#get_modal').html(response);
-                        }
-                    });
-                });
                 $('a#view').click(function() {
                     var url = $(this).attr('href');
                     $.ajax({

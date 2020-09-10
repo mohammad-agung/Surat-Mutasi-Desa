@@ -27,13 +27,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nikpemohon">NIK Pemohon</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nikpemohon" name="nikpemohon" class="form-control" required value="<?= $nik_id; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nama_pemohon">Nama Pemohon</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nama_pemohon" name="namapemohon" class="form-control" required value="<?= htmlentities($row['nama_pemohon']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -41,13 +41,13 @@ $query = mysqli_query($conn, "SELECT tbl_arsip_pindah.nama_pemohon,tbl_arsip_pin
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-nomorkartukeluarga">Nomor Kartu Keluarga</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nomorkartukeluarga" name="nomorkartukeluarga" class="form-control" required value="<?= htmlspecialchars($row['nomor_kartu_keluarga']); ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-nomorkartukeluarga" name="nomorkartukeluarga" class="form-control" required value="<?= htmlspecialchars($row['nomor_kartu_keluarga']); ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="val-namakepalakeluarga">Nama Kepala Keluarga</label>
-                                    <input <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-namakepalakeluarga" name="namakepalakeluarga" class="form-control" required value="<?= htmlentities($row['nama_kepala_keluarga']); ?>">
+                                    <input readonly <?php if ($row['status'] == 2) echo "readonly"; ?> type="text" id="val-namakepalakeluarga" name="namakepalakeluarga" class="form-control" required value="<?= htmlentities($row['nama_kepala_keluarga']); ?>">
                                 </div>
                             </div>
                         </div>
